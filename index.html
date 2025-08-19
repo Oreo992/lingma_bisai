@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星语占卜 - AI星座运势预测</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ 星语占卜 ✨</h1>
+            <p>探索宇宙的奥秘，揭示你的命运轨迹</p>
+        </header>
+        
+        <main>
+            <section class="fortune-form">
+                <h2>🔮 输入你的信息</h2>
+                <form id="fortune-form">
+                    <div class="form-group">
+                        <label for="api_key">阿里云API密钥:</label>
+                        <input type="password" id="api_key" placeholder="请输入您的阿里云API密钥" required>
+                        <small>我们不会存储您的API密钥，仅用于本次请求</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">姓名:</label>
+                        <input type="text" id="name" placeholder="请输入您的姓名" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birth_date">出生日期:</label>
+                        <input type="date" id="birth_date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">性别:</label>
+                        <select id="gender" required>
+                            <option value="">请选择</option>
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="question">想问的问题 (可选):</label>
+                        <textarea id="question" placeholder="例如：我最近的运势如何？我的爱情运势怎么样？"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">✨ 揭示我的命运 ✨</button>
+                </form>
+            </section>
+            
+            <section id="result-container" class="result-section">
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>正在连接星域...请稍候</p>
+                </div>
+                <div id="fortune-result" class="fortune-result hidden"></div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2023 星语占卜 | AI星座运势预测系统</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

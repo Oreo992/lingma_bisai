@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星语占卜演示</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .demo-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .demo-title {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 30px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(106, 17, 203, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .feature h3 {
+            color: #4ECDC4;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <header>
+            <h1>✨ 星语占卜演示 ✨</h1>
+            <p>融合AI技术与SVG图形的星座运势预测系统</p>
+        </header>
+        
+        <div class="demo-card">
+            <h2 class="demo-title">系统特色</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>🎨 精美SVG设计</h3>
+                    <p>每个占卜结果都以精心设计的SVG图形呈现，具有独特的视觉效果</p>
+                </div>
+                <div class="feature">
+                    <h3>🤖 AI智能解析</h3>
+                    <p>基于AI技术深度分析个人信息，提供个性化运势预测</p>
+                </div>
+                <div class="feature">
+                    <h3>🌌 星座主题</h3>
+                    <p>结合星座元素，打造神秘而迷人的占卜体验</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-card">
+            <h2 class="demo-title">占卜结果示例</h2>
+            <div id="demo-result">
+                <!-- 这里将显示SVG占卜卡片 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入SVG生成器 -->
+    <script src="svg_generator.js"></script>
+    <script>
+        // 演示SVG生成效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoData = {
+                "性格分析": "富有创造力，直觉敏锐，魅力十足",
+                "事业运势": "创意领域表现突出，有晋升机会",
+                "感情运势": "桃花运旺，有望遇到理想伴侣",
+                "健康建议": "注意作息规律，加强锻炼",
+                "幸运数字": "7",
+                "幸运颜色": "紫色"
+            };
+            
+            const svgGenerator = new SVGFortuneGenerator();
+            const svgContent = svgGenerator.createFortuneCard(demoData, "张三");
+            document.getElementById('demo-result').innerHTML = svgContent;
+        });
+    </script>
+</body>
+</html>
