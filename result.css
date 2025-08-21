@@ -1,0 +1,107 @@
+/* result.css - 占卜结果页面的专属样式 */
+
+.result-container {
+	max-width: 1280px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background: rgba(12, 12, 24, 0.85);
+	border-radius: 20px;
+	box-shadow: 0 10px 40px rgba(18, 11, 66, 0.7);
+	border: 2px solid rgba(136, 107, 255, 0.5);
+}
+
+.result-layout {
+	display: flex;
+	gap: 24px;
+	align-items: flex-start;
+	margin-bottom: 1.5rem;
+}
+
+.meta-panel {
+	flex: 0 0 280px;
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 14px;
+	padding: 16px;
+	backdrop-filter: blur(6px);
+}
+
+.meta-panel h3 {
+	margin-bottom: 12px;
+	color: #f0e68c;
+	font-size: 1.1rem;
+}
+
+.meta-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 8px 0;
+	border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.meta-row:last-child {
+	border-bottom: none;
+}
+
+.meta-row .label {
+	opacity: 0.8;
+}
+
+.meta-row .value {
+	font-weight: 600;
+	text-align: right;
+}
+
+.result-display-section {
+	flex: 1 1 0;
+	/* 视口高度约束，确保长SVG可以完整滚动查看 */
+	max-height: 80vh;
+	min-height: 50vh;
+	display: block;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 15px;
+	padding: 0.5rem;
+	margin-bottom: 0;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.result-display-section svg {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+	display: block;
+	margin: 0 auto;
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin-top: 0.75rem;
+}
+
+/* 结果页按钮：更小、更克制、无紫色渐变 */
+.actions .submit-btn {
+	width: auto; /* 覆盖全局100%宽度 */
+	padding: 6px 12px;
+	font-size: 0.85rem;
+	background: rgba(255,255,255,0.06);
+	border: 1px solid rgba(255,255,255,0.2);
+	box-shadow: none;
+	border-radius: 8px;
+}
+
+.actions .submit-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 992px) {
+	.result-layout { flex-direction: column; }
+	.meta-panel { width: 100%; }
+	.result-display-section { max-height: 70vh; }
+}

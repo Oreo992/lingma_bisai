@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>您的专属占卜结果 - 星语占卜</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="result.css">
+</head>
+<body>
+	<div class="container result-container">
+		<header>
+			<h1>🔮 您的命运星盘 🔮</h1>
+			<p>星辰之力为您揭示的未来轨迹</p>
+		</header>
+		
+		<main>
+			<div class="result-layout">
+				<aside id="meta-panel" class="meta-panel">
+					<h3>信息总览</h3>
+					<div class="meta-row"><span class="label">姓名</span><span class="value" id="meta-name">-</span></div>
+					<div class="meta-row"><span class="label">性别</span><span class="value" id="meta-gender">-</span></div>
+					<div class="meta-row"><span class="label">出生日期</span><span class="value" id="meta-birth">-</span></div>
+					<div class="meta-row"><span class="label">问题</span><span class="value" id="meta-question">-</span></div>
+				</aside>
+				<section id="result-display" class="result-display-section"></section>
+			</div>
+			<div class="actions">
+				<button id="back-btn" class="submit-btn">⬅️ 返回再试一次</button>
+				<button id="download-btn" class="submit-btn">⬇️ 下载占卜结果</button>
+			</div>
+		</main>
+		
+		<footer>
+			<p>© 2025 星语占卜 | AI星座运势预测系统</p>
+		</footer>
+	</div>
+
+	<script src="result.js"></script>
+</body>
+</html>

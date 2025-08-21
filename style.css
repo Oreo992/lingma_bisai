@@ -165,15 +165,25 @@ small {
 
 .result-section {
   flex: 2;
-  min-width: 300px;
-  min-height: 500px;
+  min-width: 400px;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px;
 }
 
 .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  z-index: 10;
 }
 
 .spinner {
@@ -197,6 +207,23 @@ small {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  padding: 10px;
+}
+
+.fortune-result svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fortune-result svg:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
 }
 
 .hidden {
@@ -214,20 +241,42 @@ footer {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .container {
-    padding: 15px;
+    padding: 10px;
   }
   
   header h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+  }
+  
+  header p {
+    font-size: 1rem;
   }
   
   main {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
   
-  .fortune-form, .result-section {
+  .fortune-form {
     width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .result-section {
+    width: 100%;
+    min-height: 500px;
+    padding: 10px;
+  }
+  
+  /* SVG在移动端的优化 */
+  .fortune-result svg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
   }
 }
 
@@ -235,4 +284,245 @@ footer {
 .zodiac-symbol {
   font-size: 2rem;
   margin: 0 5px;
+}
+
+/* 错误状态样式 */
+.error {
+  border-color: #ff4757 !important;
+  box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.3) !important;
+}
+
+.error-message {
+  color: #ff4757;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 错误弹窗样式 */
+.error-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-content {
+  background: linear-gradient(135deg, var(--dark-color), #16213e);
+  color: var(--light-color);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  border: 2px solid rgba(255, 71, 87, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.error-content h3 {
+  color: #ff4757;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.error-content p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.error-content button {
+  background: linear-gradient(45deg, #ff4757, #ff3838);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.error-content button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+}
+
+/* 重置按钮样式 */
+.reset-btn {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--light-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.reset-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* 改进的加载动画 */
+.loading {
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.loading p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: var(--star-color);
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 5px rgba(255, 209, 102, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(255, 209, 102, 0.8); }
+}
+
+/* 表单焦点增强 */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--star-color);
+  box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.3);
+  transform: scale(1.02);
+}
+
+/* 按钮点击效果 */
+.submit-btn:active, .reset-btn:active {
+  transform: translateY(1px);
+}
+
+/* 优化移动端体验 */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .fortune-form {
+    padding: 15px;
+    margin: 5px;
+  }
+  
+  .error-content {
+    padding: 20px;
+    margin: 15px;
+  }
+  
+  /* 按钮在小屏幕上的优化 */
+  .submit-btn, .reset-btn {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  
+  /* 输入框在小屏幕上的优化 */
+  input, select, textarea {
+    padding: 10px 12px;
+    font-size: 16px; /* 防止iOS缩放 */
+  }
+}
+
+/* 表单组件优化 */
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group:hover {
+  transform: translateY(-1px);
+  transition: var(--transition);
+}
+
+/* Label 样式优化 */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--light-color);
+  font-size: 0.95rem;
+}
+
+/* 输入框统一样式 */
+input, select, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--light-color);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+/* 输入框焦点状态 */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--star-color);
+  box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.3);
+  transform: scale(1.01);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* 响应式表单布局 */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .form-row .form-group {
+    margin-bottom: 20px;
+  }
+}
+
+/* 输入框占位符样式 */
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+/* 选择框样式优化 */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3e%3cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
 }

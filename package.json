@@ -10,8 +10,8 @@
   "keywords": ["AI", "fortune-telling", "SVG", "zodiac", "占卜", "星座"],
   "author": "Developer",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "nodemon": "^3.0.0"
   }
 }
